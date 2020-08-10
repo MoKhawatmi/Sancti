@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Sancti</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Sancti</string>
+    <string name="nav_header_subtitle">Best tourism app ever!</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="photoEn">Enhance your photos</string>
+    <string name="objName">What is this thing called?</string>
+    <string name="translate">Translate signs and banners</string>
+    <string name="findWay">Find your way around</string>
+    <string name="attraction">Find attraction points</string>
+    <string name="trips">Your trips</string>
+    <string name="highlights">Highlights</string>
+    <string name="fav">Favorites</string>
+    <string name="trip_services">Trip services</string>
+
+    <array name="places">
+        <item>Tourist attraction</item>
+        <item>Entertainment</item>
+        <item>Restaurant</item>
+        <item>Hotel</item>
+        <item>Museum</item>
+        <item>Hospital</item>
+        <item>Airport</item>
+        <item>Bus stop</item>
+    </array>
+
+    <array name="languages">
+        "Simplified Chinese, English, French, Arabic, Thai, Spanish, Turkish, Portuguese, Japanese, German, Italian, Russian, Polish, Malay, Swedish, Finnish, Norwegian, Danish, Korean"
+
+
+    </array>
+</resources>

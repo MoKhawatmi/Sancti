@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            >
+
+            <ImageView
+                android:id="@+id/flightImg"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                />
+
+            <TextView
+                android:id="@+id/flightName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="flight name"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/flightTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="flight time"
+                android:layout_below="@id/flightName"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/flightDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="flight destination"
+                android:layout_below="@id/flightTime"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/flightPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100 JOD"
+                android:layout_alignParentBottom="true"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:id="@+id/addToFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to favorites"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/flightImg"
+                />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

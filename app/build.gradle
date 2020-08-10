@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.huawei.agconnect'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "com.example.sancti"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('key.jks')
+            keyAlias 'key'
+            keyPassword '231231'
+            storePassword '231231'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.huawei.agconnect:agconnect-core:1.3.1.300'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    //site kit
+    implementation 'com.huawei.hms:site:5.0.1.300'
+
+    //map kit
+    implementation 'com.huawei.hms:maps:5.0.1.300'
+
+    // Import the base SDK.
+    implementation 'com.huawei.hms:ml-computer-vision-ocr:2.0.1.300'
+    // Import the Latin-based language model package.
+    implementation 'com.huawei.hms:ml-computer-vision-ocr-latin-model:2.0.1.300'
+    // Import the Japanese and Korean model package.
+    implementation 'com.huawei.hms:ml-computer-vision-ocr-jk-model:2.0.1.300'
+    // Import the Chinese and English model package.
+    implementation 'com.huawei.hms:ml-computer-vision-ocr-cn-model:2.0.1.300'
+
+    // Import the base SDK.
+    implementation 'com.huawei.hms:ml-computer-translate:2.0.1.300'
+    // Import the translation algorithm package.
+    implementation 'com.huawei.hms:ml-computer-translate-model:2.0.1.300'
+
+    // Import the base SDK.
+    implementation 'com.huawei.hms:ml-computer-language-detection:2.0.1.300'
+    // Import the language detection algorithm package.
+    implementation 'com.huawei.hms:ml-computer-language-detection-model:2.0.1.300'
+
+    // Import the base SDK.
+    implementation 'com.huawei.hms:ml-computer-vision-object:2.0.1.302'
+    // Import the object detection and tracking model package.
+    implementation 'com.huawei.hms:ml-computer-vision-object-detection-model:2.0.1.302'
+
+
+
+
+}
+
+
+

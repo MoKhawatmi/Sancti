@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.sancti.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.sancti.ui.trips.TripsFragment"
+        android:label="Your trips"
+        tools:layout="@layout/fragment_trips" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.sancti.ui.highlight.HighlightFragment"
+        android:label="Highlights"
+        tools:layout="@layout/fragment_highlight" />
+
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.example.sancti.ui.favorites.Favorites"
+        android:label="Favorites"
+        tools:layout="@layout/favorites_fragment" />
+
+    <fragment
+        android:id="@+id/nav_attraction"
+        android:name="com.example.sancti.ui.attraction.Attraction"
+        android:label="Attraction points"
+        tools:layout="@layout/attraction_fragment" />
+
+    <fragment
+        android:id="@+id/nav_findWay"
+        android:name="com.example.sancti.ui.findWay.FindWay"
+        android:label="Path finder"
+        tools:layout="@layout/find_way_fragment" />
+
+    <fragment
+        android:id="@+id/nav_objectName"
+        android:name="com.example.sancti.ui.objectName.ObjectName"
+        android:label="Name the object"
+        tools:layout="@layout/object_name_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_translate"
+        android:name="com.example.sancti.ui.translate.Translate"
+        android:label="Translate"
+        tools:layout="@layout/translate_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_photoEnhance"
+        android:name="com.example.sancti.ui.photoEnhance.PhotoEnhance"
+        android:label="Photo enhancer"
+        tools:layout="@layout/photo_enhance_fragment" />
+
+</navigation>

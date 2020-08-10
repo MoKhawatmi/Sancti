@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/popup_shape"
+    >
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="what to look for in country:"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="26dp"
+        android:layout_marginBottom="8dp"
+        />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <LinearLayout
+        android:id="@+id/listsLayout"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+
+    <TextView
+        android:id="@+id/traditions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Traditions"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_arrow_right"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/traditionList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/events"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Events"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_arrow_right"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
+
+    <TextView
+        android:id="@+id/dishes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dishes"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_arrow_right"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dishesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

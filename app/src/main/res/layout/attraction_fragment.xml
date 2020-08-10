@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.attraction.Attraction"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="select a country"
+        android:textSize="20sp"
+        android:completionThreshold="1"
+        />
+
+    <Spinner
+        android:id="@+id/placesSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/places"
+        />
+
+    <EditText
+        android:id="@+id/keywordSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="What are you looking for?"
+        />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go!"
+        android:gravity="center"
+        />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/placesRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>

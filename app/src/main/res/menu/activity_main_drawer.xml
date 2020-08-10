@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single" android:id="@+id/group_basic">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_plane"
+            android:title="@string/trips" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/highlights" />
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_star"
+            android:title="@string/fav" />
+    </group>
+
+
+    <group android:checkableBehavior="single" android:id="@+id/group_services">
+        <item
+            android:title="Tourism Services"
+            android:enabled="false"
+            android:checkable="false"
+            >
+        </item>
+
+        <item
+            android:id="@+id/nav_attraction"
+            android:icon="@drawable/ic_location"
+            android:title="@string/attraction" />
+        <item
+            android:id="@+id/nav_findWay"
+            android:icon="@drawable/ic_map"
+            android:title="@string/findWay" />
+        <item
+            android:id="@+id/nav_translate"
+            android:icon="@drawable/ic_text"
+            android:title="@string/translate" />
+        <item
+            android:id="@+id/nav_objectName"
+            android:icon="@drawable/ic_help"
+            android:title="@string/objName" />
+        <item
+            android:id="@+id/nav_photoEnhance"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/photoEn" />
+    </group>
+</menu>

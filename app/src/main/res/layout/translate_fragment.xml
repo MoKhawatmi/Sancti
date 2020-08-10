@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.translate.Translate"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <AutoCompleteTextView
+        android:id="@+id/targetLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:completionThreshold="1"
+        android:hint="Target language"
+        />
+
+    <Button
+        android:id="@+id/translateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go!"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/translateTx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="translate"
+        android:textColor="#000000"
+        android:textSize="26dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/lang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="language"
+        android:textColor="#000000"
+        android:textSize="26dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginVertical="10dp"
+        />
+
+    <TextView
+        android:id="@+id/translatedTx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="translated"
+        android:textColor="#000000"
+        android:textSize="26dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        />
+
+
+</LinearLayout>
