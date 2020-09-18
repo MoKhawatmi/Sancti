@@ -13,8 +13,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sancti.GMapActivity;
 import com.example.sancti.MapActivity;
 import com.example.sancti.R;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.huawei.hms.api.HuaweiApiAvailability;
 import com.huawei.hms.site.api.model.AddressDetail;
 import com.huawei.hms.site.api.model.Site;
 
@@ -71,9 +74,16 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.MyViewHold
     }
 
     public void buttonClick(View view,int pos){
+        Intent intent=null;
         try{
-            Log.i("duh",pos+"");
-            Intent intent=new Intent(context, MapActivity.class);
+
+            if(isGMS()) {
+                 intent=new Intent(context, GMapActivity.class);
+            } else if(isHMS()) {
+                 intent=new Intent(context, MapActivity.class);
+            }
+
+
             intent.putExtra("lat",items.get(pos).getLocation().getLat());
             intent.putExtra("lng",items.get(pos).getLocation().getLng());
             Log.i("duh",items.get(pos).getLocation().getLat()+"");
@@ -83,6 +93,13 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.MyViewHold
             Log.i("duh",e.toString());
         }
 
+    }
+
+    public boolean  isGMS(){
+        return GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context) == com.google.android.gms.common.ConnectionResult.SUCCESS;
+    }
+    public boolean  isHMS(){
+        return HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(context) == com.huawei.hms.api.ConnectionResult.SUCCESS;
     }
 
 }

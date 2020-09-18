@@ -5,14 +5,15 @@ public class Flight {
     String name;
     String destination;
     String time;
-    double price;
-    String image;
+    String price;
+    String airLine;
 
-    public Flight(String name, String destination, String time, double price) {
+    public Flight(String name,String airLine,String destination, String time, String price) {
         this.name = name;
         this.destination = destination;
         this.time = time;
         this.price = price;
+        this.airLine=airLine;
     }
 
     public String getName() {
@@ -27,11 +28,11 @@ public class Flight {
         return time;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public String getImage() {
-        return image;
+    public String getAirLine() {
+        return airLine;
     }
 }

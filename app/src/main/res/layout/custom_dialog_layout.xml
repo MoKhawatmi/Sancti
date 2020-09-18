@@ -3,36 +3,54 @@
     android:layout_width='match_parent'
     android:layout_height='match_parent'
     android:orientation='vertical'
-    android:padding='10sp' >
+    android:padding="5dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Add a new trip"
+        android:textColor="#0000ff"
+        android:textSize="26dp"
+        />
 
     <EditText
         android:id='@+id/tripTitle'
         android:layout_width='match_parent'
         android:layout_height='wrap_content'
         android:hint='Title'
-        android:singleLine='true' >
+        android:singleLine='true'
+        android:textSize="20dp"
+        android:layout_marginVertical="5dp"
+        >
 
         <requestFocus />
     </EditText>
 
-    <RelativeLayout
-        android:layout_width='match_parent'
-        android:layout_height='wrap_content' >
+
 
         <Button
-            android:id='@+id/btn_login'
-            android:layout_width='120dp'
+            android:id='@+id/btn_add'
+            android:layout_width='match_parent'
             android:layout_height='wrap_content'
-            android:text='Add' />
+            android:text='Add'
+            android:background="@drawable/gradient_button_shape"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
 
         <Button
             android:id='@+id/btn_cancel'
-            android:layout_width='120dp'
+            android:layout_width='match_parent'
             android:layout_height='wrap_content'
-            android:layout_alignParentTop='true'
-            android:layout_marginLeft='10dp'
-            android:layout_toRightOf='@+id/btn_login'
-            android:text='Cancel' />
-    </RelativeLayout>
+            android:text='Cancel'
+            android:background="@drawable/gradient_button_shape"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            />
+
 
 </LinearLayout>

@@ -82,6 +82,14 @@ dependencies {
     // Import the object detection and tracking model package.
     implementation 'com.huawei.hms:ml-computer-vision-object-detection-model:2.0.1.302'
 
+    implementation 'com.google.android.gms:play-services-maps:15.0.0'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    compile "com.amadeus:amadeus-java:5.3.1"
+
+
+
 
 
 

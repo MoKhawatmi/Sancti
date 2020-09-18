@@ -1,15 +1,21 @@
 package com.example.sancti.classes;
 
 public class Hotel {
+    String id;
     String name;
     String location;
-    double price;
-    String image;
+    String price;
 
-    public Hotel(String name, String location, double price) {
+
+    public Hotel(String id,String name, String location, String price) {
+        this.id=id;
         this.name = name;
         this.location = location;
         this.price = price;
+    }
+
+    public String getId(){
+        return id;
     }
 
     public String getName() {
@@ -20,7 +26,7 @@ public class Hotel {
         return location;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 

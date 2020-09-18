@@ -21,23 +21,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".GMapActivity"></activity>
+        <activity android:name=".FlightsActivity" />
+        <activity android:name=".TripActivity" />
+        <activity android:name=".MapActivity" />
 
         <meta-data
             android:name="com.huawei.hms.ml.DEPENDENCY"
             android:value="ocr,translate,langdetect" />
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBUB7EixEx3QuTUerLDaGPmP_2OZm5fUaU"/>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

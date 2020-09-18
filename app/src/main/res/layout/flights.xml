@@ -21,14 +21,6 @@
             android:foreground="?attr/selectableItemBackground"
             >
 
-            <ImageView
-                android:id="@+id/flightImg"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_launcher_background"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                />
 
             <TextView
                 android:id="@+id/flightName"
@@ -43,11 +35,17 @@
                 />
 
             <TextView
+                android:id="@+id/airLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/flightName"
+                />
+            <TextView
                 android:id="@+id/flightTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="flight time"
-                android:layout_below="@id/flightName"
+                android:layout_below="@id/airLine"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 />
@@ -67,19 +65,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100 JOD"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/flightDestination"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 />
 
             <Button
-                android:id="@+id/addToFav"
+                android:id="@+id/addFlightToFav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add to favorites"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/flightImg"
                 />
 
 

@@ -16,20 +16,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/parentHotelRelative"
             android:padding="16dp"
             android:clickable="true"
             android:focusable="true"
             android:background="?attr/selectableItemBackground"
             >
-
-            <ImageView
-                android:id="@+id/hotelImg"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_launcher_background"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                />
 
             <TextView
                 android:id="@+id/hotelName"
@@ -57,21 +49,51 @@
                 android:id="@+id/roomPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100 JOD"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/hotelLocation"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 />
 
             <Button
-                android:id="@+id/addToFav"
+                android:id="@+id/addHotelToFav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add to favorites"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/hotelImg"
                 />
+
+            <RelativeLayout
+                android:id="@+id/ratingLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:visibility="gone"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/roomPrice"
+                >
+
+                <TextView
+                    android:id="@+id/timesRated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_alignParentLeft="true"
+                    android:text="timesRated"
+                    />
+
+                <TextView
+                    android:id="@+id/hotelRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_alignParentRight="true"
+                    android:text="hotelRating"
+                    />
+
+            </RelativeLayout>
 
 
         </RelativeLayout>

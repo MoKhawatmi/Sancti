@@ -1,9 +1,9 @@
 package com.example.sancti.classes;
 
 public class Tradition {
-    String image;
     String title;
     String description;
+    String image;
 
     public Tradition(String title, String description) {
         this.title = title;
