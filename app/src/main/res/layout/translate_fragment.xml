@@ -15,50 +15,68 @@
         android:textSize="20sp"
         android:gravity="center"
         android:completionThreshold="1"
-        android:hint="Target language"
+        android:hint="@string/target_lang"
+        android:textColor="#7D0404"
+        android:theme="@style/redEditTextTheme"
+        android:layout_marginBottom="5dp"
         />
 
     <Button
         android:id="@+id/translateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go!"
+        android:text="@string/select_image"
+        android:textSize="20sp"
+        android:textColor="#7D0404"
+        android:background="@drawable/attraction_search"
         android:gravity="center"
+        android:padding="15dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/imagetotrans"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
         />
 
     <TextView
         android:id="@+id/translateTx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="translate"
-        android:textColor="#000000"
-        android:textSize="26dp"
+        android:text="@string/detected"
+        android:textColor="#FFA200"
+        android:textSize="26sp"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:background="@drawable/rounded_corners_shape"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
         />
 
     <TextView
         android:id="@+id/lang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="language"
-        android:textColor="#000000"
+        android:textColor="#7D0404"
         android:textSize="26dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginVertical="10dp"
+        android:layout_marginBottom="10dp"
         />
 
     <TextView
         android:id="@+id/translatedTx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="translated"
-        android:textColor="#000000"
-        android:textSize="26dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/translated_text"
+        android:textSize="26sp"
         android:layout_gravity="center"
-        android:gravity="center"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
         />
 
 

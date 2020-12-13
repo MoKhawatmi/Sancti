@@ -1,8 +1,9 @@
 package com.example.sancti.ui.trips;
 
-import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,26 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sancti.R;
-import com.example.sancti.adapters.RecycleAdapter;
 import com.example.sancti.adapters.TripsListAdapter;
 import com.example.sancti.classes.Trip;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
+
 
 public class TripsFragment extends Fragment {
 
@@ -81,7 +76,7 @@ public class TripsFragment extends Fragment {
                     dialogDetails.hide();
                 }
                 else{
-                    Toast.makeText(getContext(), "title should not start with a number or include any symbols", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.trip_title_error), Toast.LENGTH_LONG).show();
                 }
 
 
@@ -95,7 +90,7 @@ public class TripsFragment extends Fragment {
             }
         });
 
-
+        dialogDetails.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogDetails.show();
     };
 

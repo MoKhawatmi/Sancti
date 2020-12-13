@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +31,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHolder> {
@@ -69,9 +71,9 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
             if(view.getId()==R.id.addHotelToFav){
                 Gson g=new Gson();
                 try{
-                toursimBase.execSQL("insert into favorites (obj) values ('"+g.toJson(items.get(getAdapterPosition()),Hotel.class)+"') ;");
+                toursimBase.execSQL("insert into favorites (obj,type) values ('["+g.toJson(items.get(getAdapterPosition()),Hotel.class).toString()+"]',1) ;");
                 Log.d("JSON",g.toJson(items.get(getAdapterPosition()),Hotel.class));
-
+                    Toast.makeText(context, context.getResources().getString(R.string.added_to_fav), Toast.LENGTH_LONG).show();
                 }catch (Exception e){
                   e.printStackTrace();
                 }
@@ -82,8 +84,10 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
                         String json=resultSet.getString(1);
                         Log.d("JSON",json);
                         Gson gson = new Gson();
-                        Hotel h=gson.fromJson(json,Hotel.class);
-                        Log.d("Hotel",h.getName()+" "+h.getLocation()+"  "+h.getPrice());
+                        Type hotelListType = new TypeToken<ArrayList<Hotel>>(){}.getType();
+                        ArrayList<Hotel> h = gson.fromJson(json, hotelListType );
+                        Log.d("hotel",h.toString());
+                        Log.d("Hotel",h.get(0).getName()+" "+h.get(0).getLocation()+"  "+h.get(0).getPrice());
                     } while (resultSet.moveToNext());
                 }
             }
@@ -119,9 +123,9 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecycleAdapter.MyViewHolder holder, int position) {
-        holder.name.setText(items.get(position).getName());
-        holder.location.setText(items.get(position).getLocation());
-        holder.price.setText(items.get(position).getPrice());
+        holder.name.setText(context.getResources().getString(R.string.hotel_name)+": "+items.get(position).getName());
+        holder.location.setText(context.getResources().getString(R.string.hotel_location)+": "+items.get(position).getLocation());
+        holder.price.setText(context.getResources().getString(R.string.offer_price)+": "+items.get(position).getPrice());
     }
 
 

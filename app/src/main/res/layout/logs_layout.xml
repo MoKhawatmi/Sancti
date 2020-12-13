@@ -10,20 +10,25 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/log_background"
+            android:paddingTop="10dp"
+            >
 
             <TextView
                 android:id="@+id/logText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:textColor="#000000"
+                android:textColor="#F79F1E"
                 android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
                 />
 
             <TextView
@@ -31,16 +36,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:textColor="#000000"
+                android:textColor="#FD9927"
                 android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/logText"
                 />
 
             <ImageView
                 android:id="@+id/logImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_below="@id/logDate"
+                android:layout_centerHorizontal="true"
+                />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/logToHighlight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_to_highlights"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="@drawable/add_to_highlights"
+                android:textColor="#ffffff"
+                android:gravity="left|center_vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="5dp"
+                />
+
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 

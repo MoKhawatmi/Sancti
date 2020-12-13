@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".FlightsActivity"
-    android:id="@+id/LinearSearch">
+    android:id="@+id/LinearSearch"
+    android:padding="15dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,17 +17,22 @@
         android:layout_marginBottom="10dp"
         >
         <TextView
-            android:text="From"
-            android:textSize="20sp"
-            android:textColor="#000000"
+            android:text="@string/from"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#FF7700"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <AutoCompleteTextView
             android:id="@+id/fromCountry"
-            android:hint="Trip departure country"
+            android:hint="@string/depcountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:completionThreshold="1"
+            android:background="@drawable/log_edit"
+            android:padding="15dp"
+            android:layout_marginTop="6dp"
+            android:textColorHint="#FF7700"
             />
     </LinearLayout>
 
@@ -36,16 +43,22 @@
         android:layout_marginVertical="10dp"
         >
         <TextView
-            android:text="Departure Date"
-            android:textSize="20sp"
-            android:textColor="#000000"
+            android:text="@string/depdate"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#FF7700"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/depDate"
-            android:hint="Departure Date"
+            android:hint="@string/depdate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/log_edit"
+            android:padding="15dp"
+            android:layout_marginTop="6dp"
+            android:textColorHint="#FF7700"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -55,16 +68,22 @@
         android:layout_marginVertical="10dp"
         >
         <TextView
-            android:text="Return Date"
-            android:textSize="20sp"
-            android:textColor="#000000"
+            android:text="@string/redate"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#FF7700"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/returnDate"
-            android:hint="return date (optional)"
+            android:hint="@string/redato"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/log_edit"
+            android:padding="15dp"
+            android:layout_marginTop="6dp"
+            android:textColorHint="#FF7700"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -74,28 +93,37 @@
         android:layout_marginVertical="10dp"
         >
         <TextView
-            android:text="Number of adults"
-            android:textSize="20sp"
-            android:textColor="#000000"
+            android:text="@string/adults"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#FF7700"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <EditText
             android:id="@+id/adultNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="number of adult passengers"
+            android:hint="@string/nadults"
             android:inputType="number"
+            android:background="@drawable/log_edit"
+            android:padding="15dp"
+            android:layout_marginTop="6dp"
+            android:textColorHint="#FF7700"
             />
     </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search flights"
+        android:text="@string/search_flights"
         android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
         android:onClick="search"
         android:layout_gravity="center"
         android:gravity="center"
+        android:background="@drawable/search_flights_btn"
+        android:layout_marginTop="16dp"
         />
 
 </LinearLayout>

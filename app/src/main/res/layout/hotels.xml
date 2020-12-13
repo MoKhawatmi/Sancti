@@ -4,7 +4,10 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
-
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="0dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/rounded_corners_shape"
     >
 
     <androidx.cardview.widget.CardView
@@ -13,11 +16,16 @@
         app:cardUseCompatPadding="true"
         >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/parentHotelRelative"
-            android:padding="16dp"
+            android:paddingVertical="16dp"
             android:clickable="true"
             android:focusable="true"
             android:background="?attr/selectableItemBackground"
@@ -54,15 +62,6 @@
                 android:textStyle="bold"
                 />
 
-            <Button
-                android:id="@+id/addHotelToFav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add to favorites"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                />
-
             <RelativeLayout
                 android:id="@+id/ratingLayout"
                 android:layout_width="match_parent"
@@ -97,6 +96,21 @@
 
 
         </RelativeLayout>
+
+            <Button
+                android:id="@+id/addHotelToFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to favorites"
+                android:textColor="#910C0C"
+                android:textStyle="bold"
+                android:background="@drawable/fav_button"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                />
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

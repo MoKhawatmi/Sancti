@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.HotelOffer;
@@ -53,23 +54,27 @@ public class FlightsActivity extends AppCompatActivity {
     DatePickerDialog picker;
 
     public void search(View view){
-        String[] arr1=getResources().getStringArray(R.array.countries).clone();
-        int index= Arrays.asList(arr1).indexOf(fromCountry.getText().toString());
-        String[] arr2=getResources().getStringArray(R.array.iata).clone();
-
-        String from=Arrays.asList(arr2).get(index);
-        String depart=depDate.getText().toString();
-        String reDate;
-        if(returnDate.getText().toString().isEmpty()){
-            reDate="non";
+        if(fromCountry.getText().toString().isEmpty() || depDate.getText().toString().isEmpty() || adultNumber.getText().toString().isEmpty()){
+            Toast.makeText(this, getResources().getString(R.string.missing_info), Toast.LENGTH_LONG).show();
         }else{
-            reDate=returnDate.getText().toString();
+            String[] arr1 = getResources().getStringArray(R.array.countries).clone();
+            int index = Arrays.asList(arr1).indexOf(fromCountry.getText().toString());
+            String[] arr2 = getResources().getStringArray(R.array.iata).clone();
+
+            String from = Arrays.asList(arr2).get(index);
+            String depart = depDate.getText().toString();
+            String reDate;
+            if (returnDate.getText().toString().isEmpty()) {
+                reDate = "non";
+            } else {
+                reDate = returnDate.getText().toString();
+            }
+            int adults = Integer.valueOf(adultNumber.getText().toString());
+
+            Log.d("values", from + " " + depart + " " + reDate + " " + adults);
+
+            new Async(response).execute(cityCode, "2", from, depart, reDate, adults + "");
         }
-        int adults=Integer.valueOf(adultNumber.getText().toString());
-
-        Log.d("values",from+" "+depart+" "+reDate+" "+adults);
-
-        new Async(response).execute(cityCode,"2",from,depart,reDate,adults+"");
     }
 
     @Override
@@ -193,7 +198,7 @@ public class FlightsActivity extends AppCompatActivity {
                     flightOffers=output;
                     ArrayList<Flight> flights=new ArrayList<>();
                     for(FlightOfferSearch offer:flightOffers){
-                        flights.add(new Flight(offer.getSource(),offer.getItineraries()[0].getSegments()[0].getCarrierCode(),destCountry,offer.getItineraries()[0].getDuration(),offer.getPrice().getTotal()+" "+offer.getPrice().getCurrency()));
+                        flights.add(new Flight(offer.getItineraries()[0].getSegments()[0].getDeparture().getIataCode(),offer.getItineraries()[0].getSegments()[0].getDeparture().getAt(),offer.getItineraries()[0].getSegments()[0].getCarrierCode(),destCountry,offer.getItineraries()[0].getDuration(),offer.getPrice().getTotal()+" "+offer.getPrice().getCurrency()));
                     }
                     ShowFlightsPopup(flights);
                 }catch (Exception e){
@@ -209,7 +214,11 @@ public class FlightsActivity extends AppCompatActivity {
         inflatedView = layoutInflater.inflate(R.layout.popup_layout3, null,false);
         recyclerView=inflatedView.findViewById(R.id.recycler);
         flightsHeader=inflatedView.findViewById(R.id.flightsHeader);
-        flightsHeader.setText("Flight from "+fromCountry.getText().toString()+" to "+destCountry+" on "+depDate.getText().toString());
+        if(flights.size()==0){
+            flightsHeader.setText(getResources().getString(R.string.noflights));
+        }else {
+            flightsHeader.setText("Flight(s) from " + fromCountry.getText().toString() + " to " + destCountry + " on " + depDate.getText().toString());
+        }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         FlightAdapter adapt;

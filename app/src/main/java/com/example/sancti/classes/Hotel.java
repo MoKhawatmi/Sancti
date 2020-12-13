@@ -5,13 +5,22 @@ public class Hotel {
     String name;
     String location;
     String price;
-
+    int dbId;
 
     public Hotel(String id,String name, String location, String price) {
         this.id=id;
         this.name = name;
         this.location = location;
         this.price = price;
+    }
+
+
+    public Hotel(String id,String name, String location, String price, int dbId) {
+        this.id=id;
+        this.name = name;
+        this.location = location;
+        this.price = price;
+        this.dbId=dbId;
     }
 
     public String getId(){
@@ -30,4 +39,11 @@ public class Hotel {
         return price;
     }
 
+    public int getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(int dbId) {
+        this.dbId = dbId;
+    }
 }

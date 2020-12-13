@@ -33,11 +33,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
 public class TripActivity extends AppCompatActivity {
@@ -103,7 +100,7 @@ public class TripActivity extends AppCompatActivity {
         m.hideSoftInputFromWindow(logText.getWindowToken(),0);
         mypath=null;
         selectedImage=null;
-        logImage.setImageResource(R.drawable.cam);
+        logImage.setImageResource(R.drawable.log_cam);
     }
 
     public void addImage(View view) throws IOException {

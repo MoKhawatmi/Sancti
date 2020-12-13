@@ -23,14 +23,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:text="Edit"
+        android:text="@string/edit"
         />
     <Button
         android:id="@+id/editLogCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         />
 
 

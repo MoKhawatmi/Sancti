@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,6 +66,7 @@ public class Translate extends Fragment {
     TextView language;
     AutoCompleteTextView languagesTextView;
     String targetLanguage;
+    ImageView imagetotrans;
 
     private void selectImage() {
         Intent intent = new Intent();
@@ -79,7 +81,9 @@ public class Translate extends Fragment {
             Uri path = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), path);
-                Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+                Bitmap.createScaledBitmap(bitmap, 250, 200, true);
+                imagetotrans.setVisibility(View.VISIBLE);
+                imagetotrans.setImageBitmap(bitmap);
                 getText();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -97,15 +101,15 @@ public class Translate extends Fragment {
             @Override
             public void onSuccess(MLText text) {
                 // Recognition success.
-                Toast.makeText(getContext(), "read text SUCCESS", Toast.LENGTH_LONG).show();
-                tx.setText(text.getStringValue());
-                detectTextLanguage(text.getStringValue());
+                String string=text.getStringValue().replaceAll("[\\t\\n\\r]+"," ");
+                tx.setText(string);
+                detectTextLanguage(string);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(Exception e) {
                 // If the recognition fails, obtain related exception information.
-                Toast.makeText(getContext(), "read text ERROR", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), getResources().getString(R.string.text_not_rec), Toast.LENGTH_LONG).show();
 
                 try {
                     MLException mlException = (MLException)e;
@@ -113,7 +117,7 @@ public class Translate extends Fragment {
                     int errorCode = mlException.getErrCode();
                     // Obtain the error information. You can quickly locate the fault based on the result code.
                     String errorMessage = mlException.getMessage();
-                    tx.setText(errorMessage+"   "+errorCode);
+
                 } catch (Exception error) {
                     // Handle the conversion error.
                 }
@@ -141,7 +145,7 @@ public class Translate extends Fragment {
             @Override
             public void onSuccess(String s) {
                 // Processing logic for detection success.
-                language.setText(s);
+                language.setText(getResources().getString(R.string.orig_lang)+" "+s);
                 Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
                 translateText(detectedText,s);
             }
@@ -175,9 +179,7 @@ public class Translate extends Fragment {
         // Create a text translator using custom parameter settings.
         MLRemoteTranslateSetting setting = new MLRemoteTranslateSetting
                 .Factory()
-                // Set the source language code. The ISO 639-1 standard is used. This parameter is optional. If this parameter is not set, the system automatically detects the language.
                 .setSourceLangCode(langaugeCode)
-                // Set the target language code. The ISO 639-1 standard is used.
                 .setTargetLangCode(targetLanguage)
                 .create();
         MLRemoteTranslator mlRemoteTranslator = MLTranslatorFactory.getInstance().getRemoteTranslator(setting);
@@ -186,32 +188,22 @@ public class Translate extends Fragment {
                 new OnSuccessListener<Set<String>>() {
                     @Override
                     public void onSuccess(Set<String> result) {
-                        // Languages supported by on-cloud translation are successfully obtained.
                     }
                 });
 
-        // sourceText: text to be translated, with up to 5000 characters.
         final Task<String> task = mlRemoteTranslator .asyncTranslate(myText);
         task.addOnSuccessListener(new OnSuccessListener<String>() {
             @Override
             public void onSuccess(String text) {
-                // Processing logic for recognition success.
                 translated.setText(text);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(Exception e) {
-                // Processing logic for recognition failure.
                 try {
                     MLException mlException = (MLException)e;
-                    // Obtain the result code. You can process the result code and customize respective messages displayed to users.
-                    int errorCode = mlException.getErrCode();
-                    // Obtain the error information. You can quickly locate the fault based on the result code.
-                    String errorMessage = mlException.getMessage();
-                    translated.setText(errorCode+"  "+errorMessage);
                 } catch (Exception error) {
-                    // Handle the conversion error.
-                    translated.setText(error.toString());
+                    Toast.makeText(getActivity(), getResources().getString(R.string.error_occured), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -230,6 +222,7 @@ public class Translate extends Fragment {
         translated=v.findViewById(R.id.translatedTx);
         language=v.findViewById(R.id.lang);
         languagesTextView=v.findViewById(R.id.targetLanguage);
+        imagetotrans=v.findViewById(R.id.imagetotrans);
         String languagesSet="Simplified Chinese, English, French, Arabic, Thai, Spanish, Turkish, Portuguese, Japanese, German, Italian, Russian, Polish, Malay, Swedish, Finnish, Norwegian, Danish, Korean";
         final ArrayList<String> languageList=new ArrayList<String>();
         languageList.addAll(Arrays.asList(languagesSet.split(",")));
@@ -244,11 +237,14 @@ public class Translate extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                targetLanguage=languageCodes[languageList.indexOf(languagesTextView.getText().toString())];
-                Log.i("target language",languagesTextView.getText().toString());
-                Log.i("target language code",targetLanguage);
-                selectImage();
+                if(languagesTextView.getText().toString().isEmpty()){
+                    Toast.makeText(getActivity(), getResources().getString(R.string.target_lang_first), Toast.LENGTH_LONG).show();
+                }else {
+                    targetLanguage = languageCodes[languageList.indexOf(languagesTextView.getText().toString())];
+                    Log.i("target language", languagesTextView.getText().toString());
+                    Log.i("target language code", targetLanguage);
+                    selectImage();
+                }
             }
         });
 

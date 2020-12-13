@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -44,7 +45,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class HighlightFragment extends Fragment {
 
-    public FloatingActionButton fab;
+    public Button fab;
     public PopupWindow popWindow;
     int mDeviceHeight = 0;
     public ImageView image;
@@ -101,7 +102,7 @@ public class HighlightFragment extends Fragment {
         // inflate the custom popup layout
         LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View inflatedView = layoutInflater.inflate(R.layout.popup_add_highlight, null, false);
-        ;
+
 
         final EditText title = inflatedView.findViewById(R.id.highlightTitle);
         final EditText description = inflatedView.findViewById(R.id.highlightDescription);
@@ -124,21 +125,33 @@ public class HighlightFragment extends Fragment {
             public void onClick(View view) {
                 String highlightTitle = title.getText().toString();
                 String highlightDescription = description.getText().toString();
-                String highlightImage = mypath.getAbsolutePath();
+                String highlightImage=null;
+                if(mypath!=null){
+                    highlightImage= mypath.getAbsolutePath();
+                }
 
-                try {
-                    tourismBase.execSQL("Insert into Highlights " + "(title, description, image)" + "  Values ('" + highlightTitle + "', '" + highlightDescription + "', '" + highlightImage + "');");
-                    Log.d("success!", "insertion success!");
+                if(highlightTitle.isEmpty() || highlightDescription.isEmpty() ){
+                    Toast.makeText(getActivity(), getResources().getString(R.string.highlight_desc_error), Toast.LENGTH_LONG).show();
+                }else {
 
-                    Fragment frg = getFragmentManager().findFragmentById(id);
-                    final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.detach(frg);
-                    ft.attach(frg);
-                    ft.commit();
-                    popWindow.dismiss();
-                } catch (Exception e) {
-                    Log.d("Exception", e.toString());
-                    Log.d("Exception", "insertion failed");
+                    try {
+                        if (highlightImage != null) {
+                            tourismBase.execSQL("Insert into Highlights " + "(title, description, image)" + "  Values ('" + highlightTitle + "', '" + highlightDescription + "', '" + highlightImage + "');");
+                        } else {
+                            tourismBase.execSQL("Insert into Highlights " + "(title, description, image)" + "  Values ('" + highlightTitle + "', '" + highlightDescription + "', '" + null + "');");
+                        }
+                        Log.d("success!", "insertion success!");
+
+                        Fragment frg = getFragmentManager().findFragmentById(id);
+                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.detach(frg);
+                        ft.attach(frg);
+                        ft.commit();
+                        popWindow.dismiss();
+                    } catch (Exception e) {
+                        Log.d("Exception", e.toString());
+                        Log.d("Exception", "insertion failed");
+                    }
                 }
             }
         });
@@ -172,13 +185,13 @@ public class HighlightFragment extends Fragment {
             }
         });
         tourismBase = getActivity().openOrCreateDatabase("data", getActivity().MODE_PRIVATE, null);
-        tourismBase.execSQL("CREATE TABLE IF NOT EXISTS Highlights(id integer primary key AUTOINCREMENT, title VARCHAR, description VARCHAR, image VARCHAR);");
+        tourismBase.execSQL("CREATE TABLE IF NOT EXISTS Highlights(id integer primary key AUTOINCREMENT, title VARCHAR, description VARCHAR, image VARCHAR, islog integer DEFAULT 0);");
         highlightsList = new ArrayList<>();
 
         Cursor resultSet = tourismBase.rawQuery("Select * from Highlights", null);
         if (resultSet != null && resultSet.moveToFirst()) {
             do {
-                highlightsList.add(new Highlight(resultSet.getInt(0), resultSet.getString(1), resultSet.getString(2), resultSet.getString(3)));
+                highlightsList.add(new Highlight(resultSet.getInt(0), resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),resultSet.getInt(4)));
             } while (resultSet.moveToNext());
         }
         id= this.getId();

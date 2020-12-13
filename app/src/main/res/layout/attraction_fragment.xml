@@ -13,36 +13,46 @@
         android:id="@+id/autoCompCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="select a country"
+        android:hint="@string/select_attraction_country"
         android:textSize="20sp"
         android:completionThreshold="1"
+        android:layout_marginBottom="5dp"
         />
 
     <Spinner
         android:id="@+id/placesSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:entries="@array/places"
+        android:background="@drawable/spinner"
+        android:layout_marginBottom="5dp"
         />
 
     <EditText
         android:id="@+id/keywordSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="What are you looking for?"
+        android:hint="@string/attraction_keyword_search"
+        android:layout_marginBottom="5dp"
         />
 
     <Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go!"
+        android:text="@string/search"
+        android:textSize="20sp"
+        android:textColor="#AA0404"
+        android:textStyle="bold"
+        android:background="@drawable/attraction_search"
         android:gravity="center"
+        android:layout_marginBottom="5dp"
         />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/placesRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            />
 
 </LinearLayout>

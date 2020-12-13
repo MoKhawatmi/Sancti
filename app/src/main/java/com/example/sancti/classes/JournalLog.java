@@ -6,6 +6,7 @@ public class JournalLog {
     String image;
     String date;
 
+
     public JournalLog(String text,String image,String date){
         this.text=text;
         this.image=image;

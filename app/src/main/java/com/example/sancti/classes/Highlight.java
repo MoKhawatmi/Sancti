@@ -7,18 +7,31 @@ public class Highlight {
     String title;
     String description;
     String image;
+    int isLog;
 
-    public Highlight(int id, String title, String description,String image) {
+
+    public Highlight(int id, String title, String description,String image,int isLog) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.image = image;
+        if(isLog==1){
+            this.isLog=1;
+        }else{
+            this.isLog=0;
+        }
+
     }
 
-    public Highlight(String title, String description,String image) {
+    public Highlight(String title, String description,String image, int isLog) {
         this.title = title;
         this.description = description;
         this.image = image;
+        if(isLog==1){
+            this.isLog=1;
+        }else{
+            this.isLog=0;
+        }
     }
 
     public int getId() {
@@ -51,5 +64,13 @@ public class Highlight {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getIsLog() {
+        return isLog;
+    }
+
+    public void setLog(int log) {
+        isLog = log;
     }
 }

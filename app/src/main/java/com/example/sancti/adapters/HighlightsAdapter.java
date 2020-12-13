@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
@@ -51,8 +51,9 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.My
         @Override
         public boolean onLongClick(View v) {
             final int id=items.get(getAdapterPosition()).getId();
+            final int logged=items.get(getAdapterPosition()).getIsLog();
             Log.d("in adapter position",getAdapterPosition()+"");
-            Log.d("item long clicked",id+"");
+            Log.d("item long clicked",id+" logged? "+logged);
 
 
 
@@ -81,12 +82,14 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.My
                             Log.d("db delete success","done");
 
                             //delete image file
-                            try{
-                                File fdelete = new File(imagePath);
-                                fdelete.delete();
-                                Log.d("file delete success","done");
-                            }catch (Exception e){
-                                Log.d("deletion failed",e.toString());
+                            if(logged==0){
+                                try{
+                                    File fdelete = new File(imagePath);
+                                    fdelete.delete();
+                                    Log.d("file delete success","done");
+                                }catch (Exception e){
+                                    Log.d("deletion failed",e.toString());
+                                }
                             }
 
                             //delete from arraylist and update adapter
@@ -118,9 +121,15 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.My
 
     @Override
     public void onBindViewHolder(HighlightsAdapter.MyViewHolder holder, int position) {
-        holder.title.setText(items.get(position).getTitle());
+        if(items.get(position).getTitle()==null||items.get(position).getTitle()==""||items.get(position).getTitle().equals("null")){
+            holder.title.setText("");
+        }else{
+            holder.title.setText(items.get(position).getTitle());
+        }
         holder.description.setText(items.get(position).getDescription());
-        holder.image.setImageDrawable(Drawable.createFromPath(items.get(position).getImage()));
+        if(items.get(position).getImage()!=null){
+            holder.image.setImageDrawable(Drawable.createFromPath(items.get(position).getImage()));
+        }
     }
 
     @Override

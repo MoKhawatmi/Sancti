@@ -67,19 +67,32 @@ public class LogsAdapter extends RecyclerView.Adapter<LogsAdapter.MyViewHolder> 
      class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView text,date;
         ImageView image;
+        Button logToHighlight;
         public MyViewHolder(@NonNull View v) {
             super(v);
             text=v.findViewById(R.id.logText);
             date=v.findViewById(R.id.logDate);
             image=v.findViewById(R.id.logImage);
+            logToHighlight=v.findViewById(R.id.logToHighlight);
             tourismBase=context.openOrCreateDatabase("data", context.MODE_PRIVATE, null);
+            logToHighlight.setOnClickListener(this);
             v.setOnClickListener(this);
             v.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(context, items.get(getAdapterPosition()).getId()+"", Toast.LENGTH_LONG).show();
+                JournalLog log=items.get(getAdapterPosition());
+                try{
+                    if(log.getImage()==null || log.getImage()==""){
+                        tourismBase.execSQL("Insert into Highlights " + "(title, description, image, islog)" + "  Values ('" + null + "', '" + log.getText() + "', '" + null + "', " + 1 + ");");
+                    }else{
+                        tourismBase.execSQL("Insert into Highlights " + "(title, description, image, islog)" + "  Values ('" + null + "', '" + log.getText() + "', '" + log.getImage() + "', " + 1 + ");");
+                    }
+                    Toast.makeText(context, context.getResources().getString(R.string.addedh), Toast.LENGTH_LONG).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
         }
 
          @Override
@@ -105,9 +118,9 @@ public class LogsAdapter extends RecyclerView.Adapter<LogsAdapter.MyViewHolder> 
          public void delete(){
              new AlertDialog.Builder(context)
                      .setIcon(android.R.drawable.ic_dialog_alert)
-                     .setTitle("Deleting Log")
-                     .setMessage("Are you sure you want to delete this log?")
-                     .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                     .setTitle(context.getResources().getString(R.string.dlog))
+                     .setMessage(context.getResources().getString(R.string.ddlog))
+                     .setPositiveButton(context.getResources().getString(R.string.yes), new DialogInterface.OnClickListener()
                      {
                          @Override
                          public void onClick(DialogInterface dialog, int which) {
@@ -116,10 +129,10 @@ public class LogsAdapter extends RecyclerView.Adapter<LogsAdapter.MyViewHolder> 
                              items.remove(getAdapterPosition());
                              notifyItemRemoved(getAdapterPosition());
                              notifyDataSetChanged();
-                             Toast.makeText(context, "Log deleted successfully", Toast.LENGTH_LONG).show();
+                             Toast.makeText(context, context.getResources().getString(R.string.logd), Toast.LENGTH_LONG).show();
                          }
                      })
-                     .setNegativeButton("No", null)
+                     .setNegativeButton(context.getResources().getString(R.string.no), null)
                      .show();
          }
 

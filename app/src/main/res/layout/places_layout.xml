@@ -5,13 +5,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="@drawable/attractions_shape"
     >
 
     <TextView
         android:id="@+id/placeTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:textColor="#000000"
         android:textStyle="bold"
         />
@@ -21,15 +22,22 @@
         android:id="@+id/placeAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:textColor="#000000"
+        android:layout_marginVertical="5dp"
         />
+
     <Button
         android:id="@+id/openMapBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="show on map"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/show_map"
+        android:textColor="#ffffff"
+        android:padding="5dp"
+        android:layout_marginVertical="8dp"
         />
 
 </LinearLayout>

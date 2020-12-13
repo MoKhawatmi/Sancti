@@ -4,30 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/popup_shape"
+    android:background="@drawable/add_highlight_popup"
+    android:padding="20dp"
     >
 
     <EditText
         android:id="@+id/highlightTitle"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:hint="Title"
+        android:textColor="#ffffff"
+        android:hint="@string/title"
+        android:backgroundTint="#48A501"
         />
 
     <EditText
         android:id="@+id/highlightDescription"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:hint="Description"
+        android:hint="@string/description"
         android:minLines="6"
         android:maxLength="200"
+        android:textColor="#ffffff"
+        android:backgroundTint="#B2DB06"
         />
 
     <ImageView
         android:id="@+id/highlightImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/cam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/add_image"
         android:layout_gravity="center_horizontal"
         android:clickable="true"
         />
@@ -38,7 +43,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Add Highlight!"
+        android:text="@string/add"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="@drawable/add_highlight_button"
         />
 
 </LinearLayout>

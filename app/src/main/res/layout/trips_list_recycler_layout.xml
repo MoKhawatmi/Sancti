@@ -11,7 +11,12 @@
         android:id="@+id/tripTitleRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="25sp"
+        android:textColor="#FB8926"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/trip_list_item"
         />
 
 </LinearLayout>

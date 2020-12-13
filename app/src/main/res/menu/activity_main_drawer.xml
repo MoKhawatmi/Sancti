@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view"
+    >
 
     <group android:checkableBehavior="single" android:id="@+id/group_basic">
         <item
@@ -14,34 +15,28 @@
             android:title="@string/trips" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_highlight"
             android:title="@string/highlights" />
         <item
             android:id="@+id/nav_favorites"
-            android:icon="@drawable/ic_star"
+            android:icon="@drawable/ic_fav"
             android:title="@string/fav" />
     </group>
 
 
     <group android:checkableBehavior="single" android:id="@+id/group_services">
-        <item
-            android:title="Tourism Services"
-            android:enabled="false"
-            android:checkable="false"
-            >
-        </item>
 
         <item
             android:id="@+id/nav_attraction"
-            android:icon="@drawable/ic_location"
+            android:icon="@drawable/ic_places"
             android:title="@string/attraction" />
         <item
             android:id="@+id/nav_translate"
-            android:icon="@drawable/ic_text"
+            android:icon="@drawable/ic_translate"
             android:title="@string/translate" />
         <item
-            android:id="@+id/nav_photoEnhance"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/photoEn" />
+            android:id="@+id/nav_landmark"
+            android:icon="@drawable/ic_landmark"
+            android:title="@string/landmark" />
     </group>
 </menu>

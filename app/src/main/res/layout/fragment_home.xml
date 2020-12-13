@@ -4,10 +4,31 @@
     android:id="@+id/LinearHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     tools:context=".ui.home.HomeFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    >
 
+    <LinearLayout
+        android:id="@+id/topLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true">
+
+
+    <ImageView
+        android:id="@+id/welcome_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/main_top_image"
+        />
 
     <TextView
         android:id="@+id/text_home"
@@ -17,9 +38,11 @@
         android:textSize="20sp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Welcome! \n Search for a country"
-        android:textColor="#000000"
+        android:text="@string/searchforcountry"
+        android:textColor="#FFBC04"
+        android:fontFamily="@font/century_gothic"
         android:textStyle="bold"
+        android:layout_marginBottom="15dp"
         />
 
     <AutoCompleteTextView
@@ -30,72 +53,251 @@
         android:gravity="center"
         android:textStyle="bold"
         android:completionThreshold="1"
+        android:fontFamily="@font/malgun"
+        android:background="@drawable/edittext_rec"
+        android:layout_marginBottom="15dp"
+        android:textSize="23sp"
         />
-
+    </LinearLayout>
     <Button
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go!"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textStyle="bold"
+        android:background="@drawable/search_button"
         />
 
-    <LinearLayout
-        android:id="@+id/options_layout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="15px"
+        android:layout_marginVertical="15dp"
         >
 
-        <Button
-            android:id="@+id/activities_button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/options_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What to look for"
-            android:layout_gravity="center"
+            android:orientation="vertical"
             android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_gravity="center"
-        >
-        <Button
-            android:id="@+id/hotels_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Find hotels"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            />
-        <Button
-            android:id="@+id/flights_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Find flights"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            />
+            android:visibility="gone"
+            android:paddingTop="10dp"
+            >
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_gravity="center"
+                >
+                <Button
+                    android:id="@+id/hotels_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/findhotels"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="15dp"
+                    android:fontFamily="@font/malgun"
+                    android:background="@drawable/rec_solid_two"
+                    android:textSize="20sp"
+                    />
+                <Button
+                    android:id="@+id/flights_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/findflights"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="15dp"
+                    android:fontFamily="@font/malgun"
+                    android:background="@drawable/rec_solid_two"
+                    android:textSize="20sp"
+                    />
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/countryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/lemonada"
+                android:textColor="#FFBC04"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:layout_marginVertical="10dp"
+                />
+
+                <GridLayout
+                    android:id="@+id/photoGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:rowCount="2"
+                    android:columnCount="3"
+                    android:layout_gravity="center_horizontal"
+
+                    >
+                    <ImageView
+                        android:src="@drawable/cam"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="5dp"
+                        android:tag="0"
+                        />
+
+                    <ImageView
+                        android:src="@drawable/cam"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="5dp"
+                        android:tag="1"
+                        />
+
+                    <ImageView
+                        android:src="@drawable/cam"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="5dp"
+                        android:tag="2"
+                        />
+
+                    <ImageView
+                        android:src="@drawable/cam"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="5dp"
+                        android:tag="3"
+                        />
+
+                    <ImageView
+                        android:src="@drawable/cam"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="5dp"
+                        android:tag="4"
+                        />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/cam"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="5dp"
+                        android:tag="5"
+                        />
+
+                </GridLayout>
+
+            <TextView
+                android:id="@+id/weatherState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#5692DF"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginVertical="10dp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/weatherRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:id="@+id/covid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    >
+            <TextView
+                android:id="@+id/covidState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/covidConfirmed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginVertical="5dp"
+                android:paddingVertical="12dp"
+                android:paddingLeft="12dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:background="@drawable/covid_confirmed"
+                />
+            <TextView
+                android:id="@+id/covidDead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginVertical="5dp"
+                android:paddingVertical="12dp"
+                android:paddingLeft="12dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:background="@drawable/covid_dead"
+                />
+            <TextView
+                android:id="@+id/covidRecovered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginVertical="5dp"
+                android:paddingVertical="12dp"
+                android:paddingLeft="12dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:background="@drawable/covid_recovered"
+                />
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/covid_icons"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="-10dp"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

@@ -50,6 +50,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class Attraction extends Fragment {
 
@@ -133,6 +134,9 @@ public class Attraction extends Fragment {
         Button btn=v.findViewById(R.id.btn);
         placesList=new ArrayList<Site>();
 
+        ArrayAdapter<String> spinAdapt=new ArrayAdapter<>(getContext(),R.layout.spinner_layout,getResources().getStringArray(R.array.places));
+        places.setAdapter(spinAdapt);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (getContext(),android.R.layout.select_dialog_item,getResources().getStringArray(R.array.countries));
         countrySearch.setAdapter(adapter);
@@ -140,10 +144,14 @@ public class Attraction extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //get code and coordiante
-                getCoCo(countrySearch.getText().toString());
-                InputMethodManager m=(InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                m.hideSoftInputFromWindow(keywordSearch.getWindowToken(),0);
+                if(countrySearch.getText().toString().isEmpty() || keywordSearch.getText().toString().isEmpty()){
+                    Toast.makeText(getActivity(), getResources().getString(R.string.attraction_search_error), Toast.LENGTH_LONG).show();
+                }else {
+                    //get code and coordiante
+                    getCoCo(countrySearch.getText().toString());
+                    InputMethodManager m = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    m.hideSoftInputFromWindow(keywordSearch.getWindowToken(), 0);
+                }
             }
         });
 
@@ -208,21 +216,27 @@ public class Attraction extends Fragment {
             case 7:
                 request.setHwPoiType(HwLocationType.BUS_STOP);
                 break;
+            case 8:
+                request.setHwPoiType(HwLocationType.ARABIAN_RESTAURANT);
+                break;
         }
         request.setCountryCode(countryCode);
         request.setLanguage("en");
         request.setPageIndex(1);
         request.setPageSize(5);
 
+
         SearchResultListener<TextSearchResponse> resultListener = new SearchResultListener<TextSearchResponse>() {
             // Return search results upon a successful search.
             @Override
             public void onSearchResult(TextSearchResponse results) {
                 if (results == null || results.getTotalCount() <= 0) {
+                    Toast.makeText(getActivity(), getResources().getString(R.string.no_results_found), Toast.LENGTH_LONG).show();
                     return;
                 }
                 List<Site> sites = results.getSites();
                 if(sites == null || sites.size() == 0){
+                    Toast.makeText(getActivity(), getResources().getString(R.string.no_results_found), Toast.LENGTH_LONG).show();
                     return;
                 }
                 for (Site site : sites) {
@@ -236,8 +250,8 @@ public class Attraction extends Fragment {
             }
             @Override
             public void onSearchError(SearchStatus status) {
+                Toast.makeText(getActivity(), getResources().getString(R.string.error_occured), Toast.LENGTH_LONG).show();
                 Log.i("TAG", "Error : " + status.getErrorCode() + " " + status.getErrorMessage());
-
             }
         };
 

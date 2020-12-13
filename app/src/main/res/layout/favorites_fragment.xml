@@ -6,12 +6,10 @@
     tools:context=".ui.favorites.Favorites"
     >
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoritesRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="favorites"
-        android:textColor="#000000"
-        android:textSize="16dp"
+        android:layout_height="wrap_content"
         />
 
 </FrameLayout>

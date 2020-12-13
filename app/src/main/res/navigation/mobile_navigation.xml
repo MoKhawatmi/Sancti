@@ -14,37 +14,38 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.sancti.ui.trips.TripsFragment"
-        android:label="Your trips"
+        android:label="@string/yourtrips"
         tools:layout="@layout/fragment_trips" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.sancti.ui.highlight.HighlightFragment"
-        android:label="Highlights"
+        android:label="@string/hochlichts"
         tools:layout="@layout/fragment_highlight" />
 
     <fragment
         android:id="@+id/nav_favorites"
         android:name="com.example.sancti.ui.favorites.Favorites"
-        android:label="Favorites"
+        android:label="@string/favlabel"
         tools:layout="@layout/favorites_fragment" />
 
     <fragment
         android:id="@+id/nav_attraction"
         android:name="com.example.sancti.ui.attraction.Attraction"
-        android:label="Attraction points"
+        android:label="@string/attra"
         tools:layout="@layout/attraction_fragment" />
 
     <fragment
         android:id="@+id/nav_translate"
         android:name="com.example.sancti.ui.translate.Translate"
-        android:label="Translate"
+        android:label="@string/translatelabel"
         tools:layout="@layout/translate_fragment"/>
 
     <fragment
-        android:id="@+id/nav_photoEnhance"
-        android:name="com.example.sancti.ui.photoEnhance.PhotoEnhance"
-        android:label="Photo enhancer"
-        tools:layout="@layout/photo_enhance_fragment" />
+        android:id="@+id/nav_landmark"
+        android:name="com.example.sancti.ui.landmark.LandmarkFragment"
+        android:label="@string/landma"
+        tools:layout="@layout/landmark_fragment"/>
+
 
 </navigation>
